@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* Alpenglow Desk tokens. Dark-first; [data-theme="light"] is the variant for white slides.
+   Components use the semantic colours below, never raw hex. */
+:root {
+  color-scheme: dark;
+  --ink: #0B0F14;
+  --panel: #121821;
+  --panel-2: #18202B;
+  --shell: rgb(255 255 255 / 0.035);
+  --ring: rgb(255 255 255 / 0.08);
+  --ring-strong: #6B7686;
+  --hi: rgb(255 255 255 / 0.06);
+  --text: #E9ECF1;
+  --text-2: #A9B2BF;
+  --text-3: #98A2AF;
+  --accent: #E39A5B;
+  --accent-text: #E39A5B;
+  --accent-ink: #1A1007;
+  --accent-soft: rgb(227 154 91 / 0.12);
+  --marker: #E9ECF1;
+  --good: #5BC994; --good-soft: rgb(91 201 148 / 0.12);
+  --warn: #E8B451; --warn-soft: rgb(232 180 81 / 0.12);
+  --bad: #F2796E; --bad-soft: rgb(242 121 110 / 0.12);
+  --s1: #3D87DC; --s2: #1AA581; --s3: #B0407E; --s4: #B0820F;
+  --grid: #1E2632;
+  --axis: #5C6776;
+  --train: #8C9BB0;
+  --band-signal: rgb(227 154 91 / 0.13);
+  --band-cost: rgb(169 178 191 / 0.12);
+  --glow: rgb(227 154 91 / 0.12);
+  --veil: rgb(18 24 33 / 0.86);
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --ink: #EEF1F5;
+  --panel: #FFFFFF;
+  --panel-2: #F6F8FA;
+  --shell: rgb(18 24 32 / 0.035);
+  --ring: rgb(18 24 32 / 0.09);
+  --ring-strong: #8E97A4;
+  --hi: rgb(255 255 255 / 0.9);
+  --text: #121820;
+  --text-2: #4A5563;
+  --text-3: #556070;
+  --accent: #A9561A;
+  --accent-text: #8A4512;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #FBEBDD;
+  --marker: #121820;
+  --good: #1B7346; --good-soft: #E2F2E9;
+  --warn: #855600; --warn-soft: #FCF0D6;
+  --bad: #B42318; --bad-soft: #FCE6E4;
+  --s1: #2A6FC0; --s2: #1BA07E; --s3: #B0397A; --s4: #A8780E;
+  --grid: #E6E9EE;
+  --axis: #8E97A4;
+  --train: #2F3B4C;
+  --band-signal: rgb(169 86 26 / 0.10);
+  --band-cost: rgb(47 59 76 / 0.10);
+  --glow: rgb(233 150 90 / 0.18);
+  --veil: rgb(255 255 255 / 0.86);
+}
+
+@theme inline {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, Consolas, monospace;
+  --color-ink: var(--ink);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-shell: var(--shell);
+  --color-ring: var(--ring);
+  --color-ring-strong: var(--ring-strong);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --color-grid: var(--grid);
+  --color-marker: var(--marker);
+  --color-train: var(--train);
+  --ease-glide: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@layer base {
+  html { background: var(--ink); }
+  body {
+    background: var(--ink); color: var(--text); font-family: var(--font-sans);
+    font-feature-settings: "ss01", "tnum"; -webkit-font-smoothing: antialiased; min-height: 100dvh;
+  }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+  h1, h2, h3 { text-wrap: balance; }
+  ::selection { background: var(--accent-soft); }
+}
+
+/* First light on the ridge: one fixed, non-interactive layer (never on scrolling content). */
+.glow::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(60% 45% at 6% -8%, var(--glow), transparent 62%),
+    radial-gradient(40% 30% at 100% 0%, rgb(61 135 220 / 0.05), transparent 70%);
+}
+
+/* Double bezel: outer shell + inner core with concentric radii. */
+.bezel { padding: 6px; border-radius: 2rem; background: var(--shell); box-shadow: inset 0 0 0 1px var(--ring); }
+.bezel > .core {
+  border-radius: calc(2rem - 6px); background: var(--panel);
+  box-shadow: inset 0 1px 0 var(--hi), inset 0 0 0 1px var(--ring);
+}
+.bezel.tight { border-radius: 1.5rem; }
+.bezel.tight > .core { border-radius: calc(1.5rem - 6px); }
+
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .breathe { animation: breathe 2.6s ease-in-out infinite; }
+  @keyframes breathe { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass { backdrop-filter: none !important; background: var(--panel) !important; }
+}

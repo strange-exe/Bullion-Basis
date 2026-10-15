@@ -1,0 +1,18 @@
+# dependencies and builds
+node_modules/
+dist/
+.wrangler/
+*.log
+
+# local tooling, drafts and submission artefacts (not needed to build or run)
+.claude/
+deck/
+deliverables/
+prototype/
+*.pdf
+
+# raw Bhavcopy downloads (re-download from MCX; only filtered outputs are committed)
+data/raw/
+
+# generated from ../data at build time (npm run data)
+web/src/lib/real-data.json
