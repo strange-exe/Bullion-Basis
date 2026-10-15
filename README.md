@@ -1,6 +1,6 @@
 # Bullion Basis
 
-**Live:** https://gold-spread-lab.pages.dev
+**Live:** https://bullion-basis.pages.dev
 
 Team Blaze, HackInHills 2026, Track 3: Commodity Derivatives Intelligence.
 

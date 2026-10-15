@@ -1,4 +1,4 @@
-# Gold Spread Lab (web)
+# Bullion Basis (web)
 
 Team Blaze, HackInHills 2026, Track 3: Commodity Derivatives Intelligence.
 
@@ -24,13 +24,18 @@ npm run preview    # http://127.0.0.1:5318 with the production security headers
 To use more history, stack daily Bhavcopy CSVs with `python ../data/filter_gold.py --bhav "../data/raw/*.csv" --out ../data`
 and rebuild.
 
-## Deploy (Cloudflare Pages)
+## Deploy (Cloudflare Pages, Git integration)
 
-```bash
-npx wrangler pages project create gold-spread-lab --production-branch main
-npx wrangler pages deploy dist --project-name gold-spread-lab --branch main
-```
+The Pages project `bullion-basis` builds from this repository on every push to `main`:
 
+| Setting | Value |
+|---|---|
+| Root directory | `web` |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Node.js | `22.16.0` (pinned in `web/.node-version`) |
+
+The build reads `../data`, so the whole repository must be checked out (Pages does this by default).
 `public/_headers` sets a strict CSP (no inline script or style), `nosniff`, `frame-ancestors 'none'` and immutable
 caching for hashed assets. Pages serves `index.html` for unknown paths, so `/lab` deep links work.
 

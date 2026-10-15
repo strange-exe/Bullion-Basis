@@ -84,7 +84,7 @@ export default function Lab() {
           <a href="/" onClick={(e) => { e.preventDefault(); navigate("/"); }} className="inline-flex items-center gap-2 text-sm text-text-2 hover:text-text">
             <ArrowLeft size={16} aria-hidden="true" />Story
           </a>
-          <h1 className="mr-auto text-lg font-semibold tracking-tight">Gold Spread Lab</h1>
+          <h1 className="mr-auto text-lg font-semibold tracking-tight">Bullion Basis</h1>
           <Chip live>Real MCX Bhavcopy, {dt(SNAP_DAY)}</Chip>
         </header>
 

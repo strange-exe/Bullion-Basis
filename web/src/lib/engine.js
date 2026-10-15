@@ -1,5 +1,5 @@
 /*
- * Gold Spread Lab - analysis engine.
+ * Bullion Basis - analysis engine.
  *
  * analyzeReal(): the REAL MCX Bhavcopy snapshot (validation, normalization, same-expiry gaps, costs).
  * build() + walkForward(): the method on SYNTHETIC history until stacked Bhavcopy history is loaded:

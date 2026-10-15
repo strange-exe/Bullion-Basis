@@ -1,4 +1,4 @@
-# Gold Spread Lab: implementation plan (v2, after plan review)
+# Bullion Basis: implementation plan (v2, after plan review)
 
 **One-line pitch:** We put all four MCX gold contracts on one ₹/g (999) basis. On real data, GOLDTEN trades ~50 bps
 below GUINEA and PETAL at every expiry, while their **spot** prices match. Our pipeline tests whether that futures gap

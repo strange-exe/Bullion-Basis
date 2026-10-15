@@ -1,4 +1,4 @@
-# Gold Spread Lab: design system ("Alpenglow Desk")
+# Bullion Basis: design system ("Alpenglow Desk")
 
 > **v2 (2026-10-15), web app in `web/`.** Same theme and tokens, rebuilt in React + Tailwind 4 + Motion, with a GSAP
 > scroll replay. Changes from v1: the display/UI font is **Geist** (self-hosted, OFL) instead of Satoshi, so the strict

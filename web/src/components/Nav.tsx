@@ -25,7 +25,7 @@ export function Nav() {
       <header className="fixed inset-x-0 top-4 z-30 flex justify-center px-4 md:top-6">
         <nav aria-label="Main" className="glass flex w-full max-w-3xl items-center gap-2 rounded-full bg-panel/70 py-2 pl-4 pr-2 ring-1 ring-ring backdrop-blur-xl md:w-max md:gap-6">
           <a href="/" className="mr-auto flex items-center gap-2.5 text-[15px] font-semibold tracking-tight md:mr-0">
-            <Mark size={26} />Gold Spread Lab
+            <Mark size={26} />Bullion Basis
           </a>
           <ul className="hidden items-center gap-6 text-sm text-text-2 md:flex">
             {LINKS.map(([l, h]) => <li key={h}><a href={h} className="transition-colors duration-300 hover:text-text">{l}</a></li>)}
